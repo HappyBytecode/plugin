@@ -1,0 +1,60 @@
+plugins {
+    id 'com.android.application'
+}
+// TODO
+//apply plugin: 'sesxh.android.plugins'
+
+// TODO
+//magichook {
+//    enable = true //是否启用
+//    //项目中的class true：全部插桩 false：只有注解插桩
+//    all = true
+//    //编译时是否打印log
+//    log = true
+//    //是否用插桩后的jar包替换项目中的jar包，慎用,没测过
+//    replaceJar = false
+//    isClickJitter=true
+//    //自定义方法统计实现类
+//    impl = "com.sesxh.magichook.Hook1"
+//}
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+
+    defaultConfig {
+        applicationId "com.sesxh.magichooktool"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+
+    implementation 'com.android.support:multidex:1.0.0'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'com.jakewharton:butterknife:10.2.3'
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.6'//RecyclerView Adapter
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.3'
+//    implementation 'com.sesxh.android.plugins:magicplugin:1.0.0'
+    implementation project(path: ':magicplugin')
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+}

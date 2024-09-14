@@ -1,0 +1,31 @@
+apply plugin: 'maven'
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+def maven_version = '1.0.1'
+def maven_artifactId=project.name
+def maven_groupId = 'com.sesxh.android.plugins'
+def maven_packaging='aar'
+def maven_description='自动埋点工具1.0.1版本'
+
+uploadArchives {
+    configuration = configurations.archives
+    repositories {
+        mavenDeployer {
+            repository(url: 'http://192.168.126.254:8081/repository/maven-releases/') {
+                authentication(userName: 'releaser', password: 'releaser')
+            }
+            pom.project {
+                version maven_version
+                artifactId maven_artifactId
+                groupId maven_groupId
+                packaging maven_packaging
+                description maven_description
+            }
+            //repository(url: uri('./plugin'))
+        }
+    }
+}

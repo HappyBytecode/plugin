@@ -1,0 +1,3 @@
+include ':magicplugin'
+include ':magichook'
+include ':app'
